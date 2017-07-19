@@ -1,0 +1,56 @@
+{
+  "name": "node-webpack-starter",
+  "version": "1.0.0",
+  "author": "dead-beef",
+  "license": "MIT",
+  "private": true,
+  "description": "Front-end starter kit based on NodeJS and Webpack",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dead-beef/node-webpack-starter"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "material-design-icons-iconfont": "^3.0.3",
+    "materialize-css": "^0.99.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.2.0",
+    "expose-loader": "^0.7.3",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "jasmine-core": "^2.6.4",
+    "jasmine-jquery": "^2.1.1",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-jquery-jasmine": "^0.1.12",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "0.0.31",
+    "karma-webpack": "^2.0.4",
+    "node-sass": "^4.5.3",
+    "packpath": "^0.1.0",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.1.0"
+  },
+  "scripts": {
+    "build": "webpack --config config/webpack.config.app.js || true",
+    "build:vendor": "webpack --config config/webpack.config.vendor.js || true",
+    "build:all": "npm run build:vendor && npm run build || true",
+    "build:watch": "webpack --config config/webpack.config.app.js --watch || true",
+    "build:min": "webpack --config config/webpack.config.app.js --optimize-minimize || true",
+    "build:min:vendor": "webpack --config config/webpack.config.vendor.js --optimize-minimize || true",
+    "build:min:all": "npm run min:vendor && npm run min || true",
+    "build:min:watch": "webpack --config config/webpack.config.app.js --watch --optimize-minimize || true",
+    "clean": "rm -rf build dist || true",
+    "rebuild": "npm run clean && npm run build:all || true",
+    "rebuild:min": "npm run clean && npm run min:all || true",
+    "test": "karma start config/karma.conf.js --single-run || true",
+    "test:watch": "karma start config/karma.conf.js || true",
+    "lint": "eslint src tests || true"
+  }
+}

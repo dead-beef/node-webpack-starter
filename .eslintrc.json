@@ -1,0 +1,52 @@
+{
+	"root": true,
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"sourceType": "module"
+	},
+	"rules": {
+		"indent": [
+			"warn",
+			"tab"
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"no-unused-vars": "warn",
+		"no-console": "off",
+		"no-mixed-spaces-and-tabs": "off"
+	},
+	"globals": {
+		"jasmine": true,
+		"beforeEach": true,
+		"beforeAll": true,
+		"afterEach": true,
+		"afterAll": true,
+		"describe": true,
+		"inject": true,
+		"expect": true,
+		"spyOn": true,
+		"it": true,
+		"element": true,
+		"by": true,
+		"browser": true
+	}
+}
