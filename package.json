@@ -48,7 +48,7 @@
     "build:min:watch": "webpack --config config/webpack.config.app.js --watch --optimize-minimize || true",
     "clean": "rm -rf build dist || true",
     "rebuild": "npm run clean && npm run build:all || true",
-    "rebuild:min": "npm run clean && npm run min:all || true",
+    "rebuild:min": "npm run clean && npm run build:min:all || true",
     "test": "karma start config/karma.conf.js --single-run || true",
     "test:watch": "karma start config/karma.conf.js || true",
     "lint": "eslint src tests || true"
