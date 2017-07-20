@@ -33,20 +33,5 @@
 		"no-unused-vars": "warn",
 		"no-console": "off",
 		"no-mixed-spaces-and-tabs": "off"
-	},
-	"globals": {
-		"jasmine": true,
-		"beforeEach": true,
-		"beforeAll": true,
-		"afterEach": true,
-		"afterAll": true,
-		"describe": true,
-		"inject": true,
-		"expect": true,
-		"spyOn": true,
-		"it": true,
-		"element": true,
-		"by": true,
-		"browser": true
 	}
 }
