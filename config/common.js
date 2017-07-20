@@ -27,6 +27,11 @@ module.exports = (() => {
 		dist: path.resolve(root, config.dir.dist)
 	};
 
+	config.path.distToRoot = config.path.dist
+		.split('/')
+		.map(() => '..')
+		.join('/');
+
 	if(config.vendor === undefined) {
 		config.vendor = {};
 	}

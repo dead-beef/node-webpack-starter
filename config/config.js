@@ -13,7 +13,7 @@ module.exports = {
 	app: {
 		library: false,
 		entry: {
-			app: [ './src/js/main.js', './src/css/main.scss' ]
+			app: [ './src/css/main.scss', './src/js/main.js' ]
 		},
 		common: 'common',
 		copy: [
@@ -23,9 +23,11 @@ module.exports = {
 		tests: [
 			'./tests/main.js'
 			//'./src/*.test.js',
-			//'./src/**/*.test.js',
+			//'./src/**/*.test.js'
 			//'./tests/*.test.js',
 			//'./tests/**/*.test.js
+			//'./tests/*-test.js',
+			//'./tests/**/*-test.js'
 		]
 	}
 };

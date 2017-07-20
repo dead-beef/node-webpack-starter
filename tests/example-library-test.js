@@ -1,5 +1,3 @@
-var $ = require('jquery');
-
 describe('environment', function() {
 
 	describe('document', function() {
@@ -22,8 +20,6 @@ describe('environment', function() {
 });
 
 describe('app', function() {
-	var app = require('app/main');
-
 	beforeEach(function() {
 		$('<div/>')
 			.attr('id', 'test-container')

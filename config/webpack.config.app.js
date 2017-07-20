@@ -11,6 +11,7 @@ module.exports = (() => {
 
 	let multipleEntries = Object.keys(cfg.app.entry).length > 1
 		&& !Array.isArray(cfg.app.entry);
+
 	let library = null;
 
 	if(cfg.app.library === true) {
@@ -19,6 +20,8 @@ module.exports = (() => {
 	else if(cfg.app.library) {
 		library = cfg.app.library;
 	}
+
+	this.devtool = 'source-map';
 
 	this.output = {
 		path: cfg.path.dist
