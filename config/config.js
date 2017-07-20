@@ -5,9 +5,13 @@ module.exports = {
 	},
 	vendor: {
 		name: 'vendor',
-		css: ['./src/css/vendor.scss']
+		css: ['./src/css/vendor.scss'],
+		external: {
+			'jquery': '$'
+		}
 	},
 	app: {
+		library: false,
 		entry: {
 			app: [ './src/js/main.js', './src/css/main.scss' ]
 		},

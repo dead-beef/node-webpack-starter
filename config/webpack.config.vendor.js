@@ -1,10 +1,20 @@
 module.exports = (() => {
-	let webpack = require('webpack');
-	let ExtractTextPlugin = require('extract-text-webpack-plugin');
+	const webpack = require('webpack');
+	const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-	let path = require('path');
-	let common = require('./common');
-	let cfg = common.config;
+	const path = require('path');
+	const common = require('./common');
+	const cfg = common.config;
+
+	if(cfg.app.library) {
+		console.warn('library');
+		return {
+			output: {
+				filename: '.tmp',
+				path: cfg.path.build,
+			}
+		};
+	}
 
 	this.entry = {};
 	this.entry[cfg.vendor.name] = cfg.vendor.files;

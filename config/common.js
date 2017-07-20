@@ -1,6 +1,6 @@
 module.exports = (() => {
-	let path = require('path');
-	let packpath = require('packpath');
+	const path = require('path');
+	const packpath = require('packpath');
 
 	let config = require('./config');
 
@@ -27,18 +27,28 @@ module.exports = (() => {
 		dist: path.resolve(root, config.dir.dist)
 	};
 
-	config.vendor.path = path.resolve(
-		config.path.build,
-		config.vendor.name + '.json'
-	);
-	config.vendor.distpath = path.resolve(
-		config.path.dist, 'js',
-		config.vendor.name + '.js'
-	);
+	if(config.vendor === undefined) {
+		config.vendor = {};
+	}
+
+	if(!config.app.library) {
+		config.vendor.path = path.resolve(
+			config.path.build,
+			config.vendor.name + '.json'
+		);
+		config.vendor.distpath = path.resolve(
+			config.path.dist, 'js',
+			config.vendor.name + '.js'
+		);
+	}
+
 	config.vendor.js = this.getJsDeps(
 		require(path.resolve(root, 'package.json'))
 	);
-	config.vendor.files = config.vendor.js.concat(config.vendor.css);
+
+	if(config.vendor.css !== undefined) {
+		config.vendor.files = config.vendor.js.concat(config.vendor.css);
+	}
 
 	this.config = config;
 

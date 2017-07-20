@@ -1,18 +1,49 @@
 module.exports = (() => {
-	let webpack = require('webpack');
-	let ExtractTextPlugin = require('extract-text-webpack-plugin');
-	let CopyWebpackPlugin = require('copy-webpack-plugin');
+	const webpack = require('webpack');
+	const ExtractTextPlugin = require('extract-text-webpack-plugin');
+	const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-	let path = require('path');
-	let common = require('./common');
-	let cfg = common.config;
+	const path = require('path');
+	const common = require('./common');
+	const cfg = common.config;
 
 	this.entry = cfg.app.entry;
 
+	let multipleEntries = Object.keys(cfg.app.entry).length > 1
+		&& !Array.isArray(cfg.app.entry);
+	let library = null;
+
+	if(cfg.app.library === true) {
+		library = '[name]';
+	}
+	else if(cfg.app.library) {
+		library = cfg.app.library;
+	}
+
 	this.output = {
-		filename: 'js/[name].js',
 		path: cfg.path.dist
 	};
+
+	if(library !== null) {
+		this.output.library = library;
+		this.output.libraryTarget = 'umd';
+
+		this.externals = {};
+		for(let lib of cfg.vendor.js) {
+			this.externals[lib] = {
+				commonjs: lib,
+				commonjs2: lib,
+				amd: lib,
+				root: cfg.vendor.external[lib] || lib
+			};
+		}
+
+		let name = multipleEntries ? library + '.[name].js' : '[name].js';
+		this.output.filename = 'js/' + name;
+	}
+	else {
+		this.output.filename = 'js/[name].js';
+	}
 
 	this.module = {
 		rules: [
@@ -37,10 +68,6 @@ module.exports = (() => {
 		new ExtractTextPlugin({
 			filename: 'css/[name].css',
 			allChunks: true
-		}),
-		new webpack.DllReferencePlugin({
-			context: '.',
-			manifest: require(cfg.vendor.path)
 		})
 	];
 
@@ -53,10 +80,19 @@ module.exports = (() => {
 		this.plugins.push(new CopyWebpackPlugin(cfg.app.copy));
 	}
 
-	if(Object.keys(this.entry).length > 1) {
-		this.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-			name: cfg.app.common
-		}));
+	if(library === null) {
+		if(cfg.vendor.js) {
+			this.plugins.push(new webpack.DllReferencePlugin({
+				context: '.',
+				manifest: require(cfg.vendor.path)
+			}));
+		}
+
+		if(multipleEntries) {
+			this.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+				name: cfg.app.common
+			}));
+		}
 	}
 
 	return this;

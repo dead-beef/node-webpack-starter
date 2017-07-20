@@ -1,9 +1,9 @@
 module.exports = (config) => {
-	let webpack = require('webpack');
-	let path = require('path');
+	const webpack = require('webpack');
+	const path = require('path');
 
-	let common = require('./common');
-	let cfg = common.config;
+	const common = require('./common');
+	const cfg = common.config;
 
 	let preprocessors = {};
 	for(let path of cfg.app.tests) {
