@@ -33,63 +33,27 @@ npm install
 ```
 
 ## Building
-
-### Dependencies
-
-```
+```bash
+# dependencies
 npm run build:vendor
-```
-
-### Application
-
-Continuous
-
-```
-npm run build:watch
-```
-
-Single run
-
-```
-npm run build
-```
-
-### Minification
-
-#### Dependencies
-
-```
+# minified dependencies
 npm run build:min:vendor
-```
-
-#### Application
-
-Continuous
-
-```
+# application, single run
+npm run build
+# application, continuous
+npm run build:watch
+# minified application, single run
+npm run build:min
+# minified application, continuous
 npm run build:min:watch
 ```
 
-Single run
-
-```
-npm run build:min
-```
-
 ## Testing
-
-### Unit
-
-Continuous
-
-```
-npm run test:watch
-```
-
-Single run
-
-```
+```bash
+# unit, single run
 npm test
+# unit, continuous
+npm run test:watch
 ```
 
 ## Code Linting
