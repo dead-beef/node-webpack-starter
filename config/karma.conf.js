@@ -5,6 +5,14 @@ module.exports = (config) => {
 	const common = require('./common');
 	const cfg = common.config;
 
+	let browsers = process.env.TEST_BROWSERS;
+	if(browsers) {
+		browsers = browsers.split(/\s+/);
+	}
+	if(!(browsers && browsers[0])) {
+		browsers = ['Chromium'];
+	}
+
 	let files;
 
 	if(cfg.app.library) {
@@ -93,6 +101,6 @@ module.exports = (config) => {
 		autoWatch: true,
 		singleRun: false,
 
-		browsers: ['Chromium']
+		browsers: browsers
 	});
 };

@@ -54,6 +54,8 @@ npm run build:min:watch
 npm test
 # unit, continuous
 npm run test:watch
+# select browsers (default: Chromium)
+TEST_BROWSERS="Firefox Chrome" npm test
 ```
 
 ## Code Linting
