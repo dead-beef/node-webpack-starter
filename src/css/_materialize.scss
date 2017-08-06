@@ -1,0 +1,10 @@
+$roboto-font-path: "~materialize-css/dist/fonts/roboto/";
+
+$primary-color: color("teal", "base");
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
+
+$secondary-color: color("teal", "darken-3");
+$success-color: color("green", "base");
+$error-color: color("red", "base");
+$link-color: color("light-blue", "darken-1");

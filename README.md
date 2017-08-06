@@ -11,7 +11,7 @@ Front-end starter kit based on NodeJS and Webpack.
   * `./src/css` - stylesheets (scss files are compiled to application css bundle)
     * `./src/css/main.scss` - main application stylesheet
     * `./src/css/vendor.scss` - main vendor stylesheet
-    * `./src/css/_materialize_variables.scss` - MaterializeCSS variables
+    * `./src/css/_materialize.scss` - MaterializeCSS variables
   * `./src/img` - images
 * `./build` - temporary build files
 * `./dist` - bundled application
